@@ -1,0 +1,48 @@
+[project]
+name = "4d-vggt"
+version = "1.0.0"
+description = "4D-VGGT: A SpatioTemporal Foundation Model for Dynamic Scene Geometry Estimation"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.10"
+authors = [
+    {name = "Haonan Wang"},
+    {name = "Hanyu Zhou"},
+    {name = "Haoyue Liu"},
+    {name = "Luxin Yan"},
+]
+dependencies = [
+    "numpy<2",
+    "Pillow",
+    "huggingface_hub",
+    "einops",
+    "safetensors",
+]
+
+[project.urls]
+Homepage = "https://github.com/Haonan-Wang-aurora/4D-VGGT"
+Paper = "https://media.eventhosts.cc/Conferences/ECCV2026/pdfs/1131.pdf"
+Repository = "https://github.com/Haonan-Wang-aurora/4D-VGGT"
+
+[project.scripts]
+4d-vggt = "four_d_vggt.metadata:main"
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["four_d_vggt*"]
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+
+[tool.pixi.pypi-dependencies]
+4d-vggt = { path = ".", editable = true }
+
+[tool.pixi.environments]
+default = { solve-group = "default" }
+
+[tool.pixi.tasks]
